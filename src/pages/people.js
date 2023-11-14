@@ -9,93 +9,25 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import {AntDesign} from '@expo/vector-icons'
 
-export default function Email() {
+export default function People() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState("");
+  const [people, setPeople] = useState("");
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.back}>
-        <Text
-          style={styles.backText}
-          onPress={() => navigation.navigate("CriarConta")}
-        >
-        <AntDesign name="caretleft" size={24} color="#41C485" />
-        </Text>
-      </TouchableOpacity>
-      <Text style={styles.title}>SingUp</Text>
-      <View style={styles.inputContainer}>
-        <Text style={styles.email}>What’s your email?</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#ccc"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text
-          style={styles.buttonText}
-          onPress={() => navigation.navigate("Senha")}
-        >
-          Next
-        </Text>
-      </TouchableOpacity>
+    <View>
+        <Text style={styles.title}>Entregas Carrier Feed</Text>
+        <Text style={styles.subtitle}>Viagens Hoje (12/01) - Amanhã (13/01)</Text>
+        <Text style={styles.subtitle}>Rio Brilhante para Dourados - MS</Text>
+        <Text style={styles.subtitle}>Passará por Nova Alvorada, Rio Brilhante e Paran...</Text>
+        <Text style={styles.subtitle}>9:41 AM</Text>
+        <Text style={styles.item}>Amanda Lima - R$ 4,97</Text>
+        <Text style={styles.item}>Pedro Arruda - R$ 4,00</Text>
+        <Text style={styles.item}>Bruna Silva - R$ 4,99</Text>
+        <Text style={styles.item}>Carlos Moura - R$ 5,00</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f0f0f0",
-  },
-  back: {
-    position: "absolute",
-    top: 30,
-    left: 20,
-  },
-  backText: {
-    position: "absolute",
-    top: 80,
-    left: 30,
-    color: "#41C485",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-  inputContainer: {
-    width: 300,
-  },
-  input: {
-    width: 300,
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 50,
-    marginBottom: 12,
-    paddingHorizontal: 12,
-    backgroundColor: "#f5f5f5",
-  },
-  button: {
-    backgroundColor: "#41C485",
-    borderRadius: 50,
-    paddingVertical: 12,
-    marginTop: 20,
-    width: 300,
-  },
-  email: {
-    left: 20,
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: "center",
-  },
+  
 });
