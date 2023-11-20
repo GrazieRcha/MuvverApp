@@ -1,23 +1,25 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-// import Routes from './src/Routes/index.js';
+import { View, StyleSheet } from 'react-native'; // Certifique-se de incluir 'StyleSheet'
+
 import RoutesTab from './src/Routes/RoutesTab.js';
-import { DarkTheme } from 'react-native-paper';
 
 export default function App() {
-  return (
-   <NavigationContainer>
-      <StatusBar backgroundColor='#38A66D' barStyle='light-content'/>
-      <RoutesTab/>
-      {/* <Routes/> */}
-   </NavigationContainer>
-   
-   
-   
-   
-   
+   return (
+     <View style={styles.container}>
+       <NavigationContainer>
+         <RoutesTab />
+       </NavigationContainer>
+     </View>
    );
-}
+ }
+ 
+ const styles = StyleSheet.create({
+   container: {
+     flex: 1,
+     backgroundColor: '#FFFFFF', // Sua cor de fundo desejada
+   },
+ });
+
 
 
