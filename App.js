@@ -1,14 +1,28 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, StyleSheet } from 'react-native'; // Certifique-se de incluir 'StyleSheet'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, StyleSheet } from 'react-native';
 
 import RoutesTab from './src/Routes/RoutesTab.js';
+import Send from './src/pages/send.js';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
    return (
      <View style={styles.container}>
        <NavigationContainer>
-         <RoutesTab />
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={RoutesTab} options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Send"
+            component={Send}
+          />
+        </Stack.Navigator>
+
        </NavigationContainer>
      </View>
    );
@@ -17,7 +31,7 @@ export default function App() {
  const styles = StyleSheet.create({
    container: {
      flex: 1,
-     backgroundColor: '#FFFFFF', // Sua cor de fundo desejada
+     backgroundColor: 'white', // Sua cor de fundo desejada
    },
  });
 

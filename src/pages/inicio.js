@@ -14,6 +14,7 @@ const DATA = [
     totalDelivery: '575',
     mode: 'Carro',
     profileImage: require('../img/mulher.jpg'),
+    minValueAmount: '120,00',	
   },
   {
     id: '2',
@@ -23,48 +24,56 @@ const DATA = [
     stars: '4,0',
     totalDelivery: '70',
     mode: 'Carro',
-    profileImage: require('../img/mulher.jpg'),
+    profileImage: require('../img/img3.png'),
+    minValueAmount: '150,00',	
   },
   {
    id: '3',
    title: 'Hoje (12/01) - Amanhã (13/01)',
    origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Pedro Arruda',
+   clientName: 'Barbara Costa',
    stars: '4,0',
    totalDelivery: '70',
    mode: 'Carro',
-   profileImage: require('../img/mulher.jpg'),
+   profileImage: require('../img/img4.png'),
+   minValueAmount: '100,00',	
  },
  {
    id: '4',
    title: 'Hoje (12/01) - Amanhã (13/01)',
    origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Pedro Arruda',
-   stars: '4,0',
+   clientName: 'Bruna Silva',
+   stars: '4,99',
    totalDelivery: '70',
    mode: 'Carro',
-   profileImage: require('../img/mulher.jpg'),
+   profileImage: require('../img/img2.png'),
+   minValueAmount: '200,00',	
  },
  {
    id: '5',
    title: 'Hoje (12/01) - Amanhã (13/01)',
    origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Pedro Arruda',
-   stars: '4,0',
+   clientName: 'Carlos Moura',
+   stars: '5,0',
    totalDelivery: '70',
    mode: 'Carro',
-   profileImage: require('../img/mulher.jpg'),
+   profileImage: require('../img/img1.png'),
+   minValueAmount: '160,00',	
  },
 ];
 
-const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profileImage }) => (
+const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profileImage, minValueAmount }) => (
   <View>
     {id !== '1' && <View style={styles.separator} />}
+
+    <View>
+      <Text style={styles.date}>{title}</Text>
+      <Text style={styles.origin}>{origin}</Text>
+    </View>
     <View style={styles.item}>
       <Image source={profileImage} style={styles.profileImage} />
       <View>
-        <Text style={styles.date}>{title}</Text>
-        <Text style={styles.origin}>{origin}</Text>
+        
         <View style={styles.starsContainer}>
           <Text style={styles.name}>{clientName}</Text>
           <Icon name="circle" size={1} color="#22222252" />
@@ -79,13 +88,13 @@ const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profi
       </View>
       <View style={styles.minValueContainer}>
         <Text style={styles.minValue}>Mínimo</Text>
-        <Text style={styles.minValueAmount}>R$ 100,00</Text>
+        <Text style={styles.minValueAmount}>R$ {minValueAmount}</Text>
       </View>
     </View>
   </View>
 );
 
-const CarrierFeedScreen = () => {
+const CarrierFeedScreen = ({navigation}) => {
   const renderItem = ({ item }) => (
     <Item
       id={item.id}
@@ -96,12 +105,13 @@ const CarrierFeedScreen = () => {
       totalDelivery={item.totalDelivery}
       mode={item.mode}
       profileImage={item.profileImage}
+      minValueAmount={item.minValueAmount}
     />
   );
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" backgroundColor="black"/>
+      <StatusBar barStyle="dark-content" backgroundColor="black" />
 
       <View
         style={{
@@ -110,17 +120,34 @@ const CarrierFeedScreen = () => {
           backgroundColor: 'black',
           flexDirection: 'row',
           alignItems: 'center',
+          justifyContent: 'space-between', // Add justifyContent to space between items
         }}
       >
-        {/* Imagem no canto esquerdo */}
-        <Image
-          source={require('../img/mulher.jpg')}
-          style={{ width: 50, height: 50, borderRadius: 5, marginRight: 10 }}
-        />
-        {/* Texto ao lado da imagem */}
-        <Text style={{ color: 'white', fontSize: 20 }}>Feed</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image
+            source={require('../img/imgPerfil.jpeg')}
+            style={{ width: 50, height: 50, borderRadius: 5, marginRight: 10 }}
+          />
+          <Text style={{ color: 'white', fontSize: 20 }}>Feed</Text>
+        </View>
 
-        
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <Text style={{ color: 'white', marginRight: 10 }}>Viagens</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <Text style={{ color: 'white' }}>Objetos</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <TouchableOpacity>
+            <Icon name="info" size={25} color="white" style={{ marginRight: 10 }} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon name="settings" size={25} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <FlatList
@@ -134,11 +161,12 @@ const CarrierFeedScreen = () => {
         <TouchableOpacity
           style={{
             backgroundColor: '#32AC61',
-            padding: 10,
+            padding: 15,
             borderRadius: 50,
             flex: 1,
             marginRight: 5,
           }}
+          onPress={() => navigation.navigate('Send')}
         >
           <Text style={{ color: 'white', textAlign: 'center', borderRadius: 50 }}>Vai viajar ou quer enviar?</Text>
         </TouchableOpacity>
@@ -171,12 +199,12 @@ const styles = StyleSheet.create({
    fontSize: 12,
    color: '#222222',
    fontWeight: 'bold',
-   alignSelf: 'flex-start', 
- },
+   width: '60%',
+  },
  origin: {
    fontSize: 12,
+   width: '70%',
    color: 'rgba(34, 34, 34, 0.32)',
-   alignSelf: 'flex-start', 
  },
   name: {
     fontSize: 12,
@@ -217,7 +245,6 @@ const styles = StyleSheet.create({
    width: 50,
    height: 50,
    borderRadius: 5,
-   marginTop: 52,
    marginRight: 5,
  },
   minValueContainer: {
@@ -233,5 +260,4 @@ const styles = StyleSheet.create({
     color: '#222222',
   },
 });
-
 export default CarrierFeedScreen;
