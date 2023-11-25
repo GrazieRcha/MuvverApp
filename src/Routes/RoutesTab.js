@@ -1,7 +1,7 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import Inicio from "../pages/inicio";
 import Notificacao from "../pages/notification";
@@ -10,18 +10,7 @@ import Pedidos from "../pages/pedidos";
 import Chat from "../pages/chat";
 
 // import Objeto from "../pages/objeto";
-// import Viagens from "../pages/viagens";
 
-// const Tabs = createMaterialTopTabNavigator();
-
-// function MyTabs() {
-//   return (
-//     <Tabs.Navigator>
-//       <Tabs.Screen name="Objeto" component={Inicio} />
-//       <Tabs.Screen name="Viagens" component={Viagens} />
-//     </Tabs.Navigator>
-//   );
-// }
 
 const Tab = createMaterialBottomTabNavigator();
 

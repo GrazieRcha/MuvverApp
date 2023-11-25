@@ -1,63 +1,51 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 
-const Send = () => {
- const [destination, setDestination] = useState('');
- const [travelLocation, setTravelLocation] = useState('');
-
- const handleSubmit = () => {
-    if (!destination || !travelLocation) {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-      return;
-    }
-
-    Alert.alert('Sucesso', `Objeto enviado para ${destination}. Viajante indo para ${travelLocation}.`);
-    setDestination('');
-    setTravelLocation('');
- };
-
- return (
+export default function Send({navigation}) {
+  return (
     <View style={styles.container}>
-      <Text style={styles.title}>Muvver - Facilitando seus envios</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Para onde quer enviar seu objeto?"
-        onChangeText={setDestination}
-        value={destination}
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Vai viajar pra onde?"
-        onChangeText={setTravelLocation}
-        value={travelLocation}
-      />
-
-      <Button title="Enviar" onPress={handleSubmit} />
+      <Text style={styles.title}>
+        Facilitando seus <Text style={{ fontWeight: 'bold' }}>envios.</Text> 
+      </Text>
+      <Text> Entregue ou envie.</Text>
+     <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
+      <Text>Remetente</Text>
+        <Text style={styles.buttonText}>Para onde quer enviar seu objeto?</Text>
+        <MaterialCommunityIcons name="truck" size={54} color="white" />
+      </TouchableOpacity>
+     <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
+         <Text>Viajante</Text>
+        <Text style={styles.buttonText}>Vai viajar para onde?</Text>
+        <MaterialCommunityIcons name="car" size={54} color="white" />
+      </TouchableOpacity>
     </View>
- );
-};
+  );
+}
 
 const styles = StyleSheet.create({
- container: {
+  container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
-    paddingTop: 20,
- },
- title: {
-    fontSize: 24,
+    backgroundColor: 'rgb(255, 255, 255)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    color: '#222222',
+    fontSize: 20,
     marginBottom: 20,
- },
- input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginBottom: 10,
- },
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#353740',
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    marginLeft: 10,
+  },
 });
-
-export default Send;

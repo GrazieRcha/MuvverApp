@@ -120,7 +120,7 @@ const CarrierFeedScreen = ({navigation}) => {
           backgroundColor: 'black',
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between', // Add justifyContent to space between items
+          justifyContent: 'space-between', 
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>

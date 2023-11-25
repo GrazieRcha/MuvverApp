@@ -5,6 +5,7 @@ import { View, StyleSheet } from 'react-native';
 
 import RoutesTab from './src/Routes/RoutesTab.js';
 import Send from './src/pages/send.js';
+import Mode from './src/pages/mode.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,9 +19,15 @@ export default function App() {
             component={RoutesTab} options={{ headerShown: false }}
           />
           <Stack.Screen
+          
             name="Send"
             component={Send}
           />
+           <Stack.Screen
+          
+          name="Mode"
+          component={Mode} 
+        />
         </Stack.Navigator>
 
        </NavigationContainer>
