@@ -8,6 +8,7 @@ const Mode = () => {
 
   const transportOptions = [
     { label: 'Carro', icon: 'car' },
+    { label: 'Avião', icon: 'plane'},
     { label: 'Caminhão', icon: 'truck' },
     { label: 'Van', icon: 'bus' },
     { label: 'Bicicleta', icon: 'bicycle' },
@@ -15,7 +16,6 @@ const Mode = () => {
     { label: 'Trem', icon: 'train' },
     { label: 'Ônibus', icon: 'bus' }, 
     { label: 'Embarcação', icon: 'ship' },
-
   ];
 
   const saveData = () => {
@@ -26,19 +26,19 @@ const Mode = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Qual será o meio de transporte da sua viagem?</Text>
       <RadioButton.Group onValueChange={(newValue) => setSelectedTransport(newValue)} value={selectedTransport}>
-  {transportOptions.map((option, index) => (
-    <View key={index} style={styles.transportOption}>
-      <Icon name={option.icon} size={30} color="#16A45C" />
-      <View style={styles.radioOptionContainer}>
-        <RadioButton.Item 
-          style={styles.radioOption} 
-          label={option.label} 
-          value={option.label} 
-        />
-      </View>
-    </View>
-  ))}
-</RadioButton.Group>
+        {transportOptions.map((option, index) => (
+          <View key={index} style={styles.transportOption}>
+            <Icon name={option.icon} size={30} color="#16A45C" />
+            <View style={styles.radioOptionContainer}>
+              <RadioButton.Item 
+                style={styles.radioOption} 
+                label={option.label} 
+                value={option.label} 
+              />
+            </View>
+          </View>
+        ))}
+      </RadioButton.Group>
       <TouchableOpacity style={styles.button} onPress={saveData}>
         <Text style={styles.buttonText}>Avançar</Text>
       </TouchableOpacity>
@@ -63,6 +63,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
  
+  radioOptionContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
   radioOption: {
     flex: 1,
     flexDirection: 'row',

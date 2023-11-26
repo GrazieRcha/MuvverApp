@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Entregas = () => {
+const Mapa = () => {
   return (
     <View>
-      <Text>Este é o componente Entregas.</Text>
+      <Text>Este é o componente Mapa.</Text>
     </View>
   );
 };
 
-export default Entregas;
+export default Mapa;
