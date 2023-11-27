@@ -6,6 +6,7 @@ import { View, StyleSheet } from 'react-native';
 import RoutesTab from './src/Routes/RoutesTab.js';
 import Send from './src/pages/send.js';
 import Mode from './src/pages/mode.js';
+import Mapa from './src/pages/mapa.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,11 @@ export default function App() {
           
           name="Mode"
           component={Mode} 
+        />
+        <Stack.Screen
+          
+          name="Mapa"
+          component={Mapa} 
         />
         </Stack.Navigator>
 

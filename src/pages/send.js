@@ -15,7 +15,7 @@ export default function Send({navigation}) {
         <Text style={styles.buttonText}>Para onde quer enviar seu objeto?</Text>
         <MaterialCommunityIcons name="truck" size={54} color="white" />
       </TouchableOpacity>
-     <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
+     <TouchableOpacity onPress={() => navigation.navigate('Mapa')} style={styles.button}>
          <Text>Viajante</Text>
         <Text style={styles.buttonText}>Vai viajar para onde?</Text>
         <MaterialCommunityIcons name="car" size={54} color="white" />
