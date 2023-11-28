@@ -7,6 +7,7 @@ import RoutesTab from './src/Routes/RoutesTab.js';
 import Send from './src/pages/send.js';
 import Mode from './src/pages/mode.js';
 import Mapa from './src/pages/mapa.js';
+import Rotas from './src/pages/rotas.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +23,7 @@ export default function App() {
           <Stack.Screen
           
             name="Send"
-            component={Send}
+            component={Send} 
           />
            <Stack.Screen
           
@@ -34,6 +35,14 @@ export default function App() {
           name="Mapa"
           component={Mapa} 
         />
+
+        <Stack.Screen
+          
+          name="Rotas"
+          component={Rotas} options={{ headerShown: false }}
+        />
+
+
         </Stack.Navigator>
 
        </NavigationContainer>

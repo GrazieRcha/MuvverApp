@@ -132,7 +132,7 @@ const CarrierFeedScreen = ({navigation}) => {
         </View>
 
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
             <Text style={{ color: 'white', marginRight: 10 }}>Viagens</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('')}>

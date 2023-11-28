@@ -3,22 +3,26 @@ import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
-export default function Send({navigation}) {
+export default function Send({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        Facilitando seus <Text style={{ fontWeight: 'bold' }}>envios.</Text> 
+        Facilitando seus <Text style={{ fontWeight: 'bold' }}>envios.</Text>
       </Text>
-      <Text> Entregue ou envie.</Text>
-     <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
-      <Text>Remetente</Text>
-        <Text style={styles.buttonText}>Para onde quer enviar seu objeto?</Text>
-        <MaterialCommunityIcons name="truck" size={54} color="white" />
+      <Text style={styles.labelLabel}>Entregue ou envie.</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
+        <View style={styles.buttonContent}>
+          <Text style={styles.buttonLabel}>Remetente</Text>
+          <Text style={styles.buttonText}>Para onde quer enviar seu objeto?</Text>
+        </View>
+        <MaterialCommunityIcons name="cube-send" size={70} color="#24B96E" />
       </TouchableOpacity>
-     <TouchableOpacity onPress={() => navigation.navigate('Mapa')} style={styles.button}>
-         <Text>Viajante</Text>
-        <Text style={styles.buttonText}>Vai viajar para onde?</Text>
-        <MaterialCommunityIcons name="car" size={54} color="white" />
+      <TouchableOpacity onPress={() => navigation.navigate('Mode')} style={styles.button}>
+        <View style={styles.buttonContent}>
+          <Text style={styles.buttonLabel}>Viajante</Text>
+          <Text style={styles.buttonText}>Vai viajar para onde?</Text>
+        </View>
+        <MaterialCommunityIcons name="truck" size={64} color="#24B96E" />
       </TouchableOpacity>
     </View>
   );
@@ -37,15 +41,31 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
+    width: '85%',
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#353740',
     padding: 15,
+    marginTop: 10,
     marginVertical: 10,
     borderRadius: 10,
   },
+  buttonContent: {
+    flex: 1,
+    flexDirection: 'column',
+    padding: 30,
+  },
+  labelLabel:{
+    marginBottom: 15,
+  },
+  buttonLabel: {
+    color: 'white',
+    fontSize: 18,
+    marginBottom: 5,
+    fontWeight: 'bold',
+  },
   buttonText: {
     color: 'white',
-    marginLeft: 10,
+    fontSize: 10,
   },
 });
