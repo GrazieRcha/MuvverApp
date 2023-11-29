@@ -70,19 +70,19 @@ const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profi
       <Text style={styles.date}>{title}</Text>
       <Text style={styles.origin}>{origin}</Text>
     </View>
+   
     <View style={styles.item}>
       <Image source={profileImage} style={styles.profileImage} />
       <View>
-        
         <View style={styles.starsContainer}>
           <Text style={styles.name}>{clientName}</Text>
-          <Icon name="circle" size={1} color="#22222252" />
+          <Icon name="circle" size={7} color="#22222252" />
           <Text style={styles.stars}>{stars}</Text>
           <Icon name="star" size={16} color="#222222" />      
         </View>
         <View style={styles.deliveryInfo}>
           <Text style={styles.totalDelivery}>{`Total de entregas: ${totalDelivery}`}</Text>
-          <Icon name="circle" size={1} color="#22222252" style={styles.circleIcon} />
+          <Icon name="circle" size={7} color="#22222252" style={styles.circleIcon} />
           <Text style={styles.mode}>{mode}</Text>
         </View>
       </View>
@@ -94,7 +94,7 @@ const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profi
   </View>
 );
 
-const CarrierFeedScreen = ({navigation}) => {
+const CarrierFeedScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <Item
       id={item.id}
@@ -113,33 +113,14 @@ const CarrierFeedScreen = ({navigation}) => {
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" backgroundColor="black" />
 
-      <View
-        style={{
-          height: 150,
-          padding: 10,
-          backgroundColor: 'black',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between', 
-        }}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ height: 150, padding: 10, backgroundColor: 'black' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
           <Image
             source={require('../img/imgPerfil.jpeg')}
             style={{ width: 50, height: 50, borderRadius: 5, marginRight: 10 }}
           />
           <Text style={{ color: 'white', fontSize: 20 }}>Feed</Text>
         </View>
-
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
-            <Text style={{ color: 'white', marginRight: 10 }}>Viagens</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <Text style={{ color: 'white' }}>Objetos</Text>
-          </TouchableOpacity>
-        </View>
-
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
           <TouchableOpacity>
             <Icon name="info" size={25} color="white" style={{ marginRight: 10 }} />
@@ -148,6 +129,18 @@ const CarrierFeedScreen = ({navigation}) => {
             <Icon name="settings" size={25} color="white" />
           </TouchableOpacity>
         </View>
+        <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Viagens')}>
+            <Text style={styles.buttonHome}>Viagens</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Objetos')}>
+            <Text style={styles.buttonHome}>Objetos</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+
+       
       </View>
 
       <FlatList
@@ -156,7 +149,7 @@ const CarrierFeedScreen = ({navigation}) => {
         keyExtractor={(item) => item.id}
       />
 
-      {/* Botões na margem inferior */}
+     
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 10 }}>
         <TouchableOpacity
           style={{
@@ -189,27 +182,34 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   separator: {
-   height: 1,
-   backgroundColor: '#ccc',
-   marginVertical: 8,
-   marginLeft: 8,
-   marginRight: 8,
+    height: 1,
+    backgroundColor: '#ccc',
+    marginVertical: 8,
+    marginLeft: 8,
+    marginRight: 8,
+  },
+  buttonHome:{
+    fontSize: 16,
+    color:'#fff',
+    marginLeft: 60,
+    marginRight: 90,
   },
   date: {
    fontSize: 12,
    color: '#222222',
    fontWeight: 'bold',
    width: '60%',
+   marginLeft: 10,
   },
  origin: {
    fontSize: 12,
    width: '70%',
+   marginLeft: 10,
    color: 'rgba(34, 34, 34, 0.32)',
  },
   name: {
     fontSize: 12,
     fontWeight: 'bold',
-    marginTop: 5,
     marginRight: 5,
   },
   starsContainer: {
@@ -245,7 +245,6 @@ const styles = StyleSheet.create({
    width: 50,
    height: 50,
    borderRadius: 5,
-   marginRight: 5,
  },
   minValueContainer: {
     alignItems: 'flex-end',
@@ -260,4 +259,5 @@ const styles = StyleSheet.create({
     color: '#222222',
   },
 });
+
 export default CarrierFeedScreen;

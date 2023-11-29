@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';  
 
 const Tamanho = () => {
@@ -12,7 +12,7 @@ const Tamanho = () => {
     { label : 'Envelope', icon: 'envelope' },
     { label: 'Livro', icon: 'book'},
     { label: 'Caixa de sapato', icon: 'shoe' },
-    { label: 'Mochila', icon: 'bag' },
+    { label: 'Mochila', icon: 'personalbag' },
     { label: 'Mala grande', icon: 'suitcase' },
     { label: 'Caixa grande', icon: 'cube' },
    ];
