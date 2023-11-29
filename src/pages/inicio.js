@@ -86,9 +86,11 @@ const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profi
           <Text style={styles.mode}>{mode}</Text>
         </View>
       </View>
+      <View>
       <View style={styles.minValueContainer}>
         <Text style={styles.minValue}>Mínimo</Text>
         <Text style={styles.minValueAmount}>R$ {minValueAmount}</Text>
+      </View>
       </View>
     </View>
   </View>
@@ -121,7 +123,7 @@ const CarrierFeedScreen = ({ navigation }) => {
           />
           <Text style={{ color: 'white', fontSize: 20 }}>Feed</Text>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+        <View style={{ marginTop: -50, marginBottom: 50, flexDirection: 'row', justifyContent: 'flex-end' }}>
           <TouchableOpacity>
             <Icon name="info" size={25} color="white" style={{ marginRight: 10 }} />
           </TouchableOpacity>
@@ -247,6 +249,7 @@ const styles = StyleSheet.create({
    borderRadius: 5,
  },
   minValueContainer: {
+    displey: 'flex',
     alignItems: 'flex-end',
   },
   minValue: {
@@ -257,6 +260,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#222222',
+
   },
 });
 

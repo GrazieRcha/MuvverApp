@@ -11,71 +11,78 @@ import Rotas from './src/pages/rotas.js';
 import Volume from './src/pages/volume.js';
 import Tamanho from './src/pages/tamanho.js';
 import Preco from './src/pages/preco.js';
+import State from './src/pages/state.js';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-   return (
-     <View style={styles.container}>
-       <NavigationContainer>
+  return (
+    <View style={styles.container}>
+      <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
             component={RoutesTab} options={{ headerShown: false }}
           />
           <Stack.Screen
-          
+
             name="Send"
-            component={Send} 
+            component={Send} options={{ headerShown: false }}
           />
-           <Stack.Screen
-          
-          name="Mode"
-          component={Mode} 
-        />
-        <Stack.Screen
-          
-          name="Mapa"
-          component={Mapa} 
-        />
+          <Stack.Screen
 
-        <Stack.Screen
-          
-          name="Rotas"
-          component={Rotas} options={{ headerShown: false }}
-        />
+            name="Mode"
+            component={Mode}
+          />
+          <Stack.Screen
 
-<Stack.Screen
-          
-          name="Tamanho"
-          component={Tamanho}
-        />
+            name="Mapa"
+            component={Mapa}
+          />
 
-<Stack.Screen
-          
-          name="Volume"
-          component={Volume} 
-        />
+          <Stack.Screen
 
-        <Stack.Screen
-          
-          name="Preco"
-          component={Preco} 
-        />
+            name="Rotas"
+            component={Rotas} options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+
+            name="Tamanho"
+            component={Tamanho}
+          />
+
+          <Stack.Screen
+
+            name="Volume"
+            component={Volume}
+          />
+
+          <Stack.Screen
+
+            name="Preco"
+            component={Preco}
+          />
+
+          <Stack.Screen
+
+            name="State"
+            component={State}
+          />
 
         </Stack.Navigator>
 
-       </NavigationContainer>
-     </View>
-   );
- }
- 
- const styles = StyleSheet.create({
-   container: {
-     flex: 1,
-     backgroundColor: 'white', 
-       },
- });
+      </NavigationContainer>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+});
 
 
 
