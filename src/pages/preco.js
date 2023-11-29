@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import Slider from '@react-native-community/slider';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Preco = ({ navigation }) => {
   const [preco, setPreco] = useState(10);
@@ -11,7 +12,34 @@ const Preco = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Definir preço mínimo do deslocamento</Text>
+            <StatusBar barStyle="dark-content" backgroundColor="black" />
+
+<View style={{ height: 120, width: '100%', backgroundColor: 'black' }}>
+  <View style={styles.barContainer}>
+    <TouchableOpacity
+      style={styles.antButton}
+      onPress={() => navigation.navigate('Send')}
+    >
+      <Icon name="arrow-left" size={16} color="#fff" />
+    </TouchableOpacity>
+
+    <Text style={{ color: '#fff' }}>Ser um Muvver</Text>
+
+    <TouchableOpacity
+      style={styles.cancelButton}
+      onPress={() => navigation.navigate('Inicio')}
+    >
+      <Text style={{ color: '#fff' }}>Cancelar</Text>
+    </TouchableOpacity>
+  </View>
+    <View>
+      <Text style={{color:'#fff', fontSize:20, marginLeft:12, marginTop:-50, padding:10}}>
+      Definir preço mínimo do deslocamento?
+      </Text>
+    </View>
+</View>
+<View style={styles.containerPreco}>
+      <Text style={styles.title}>Preço de entrega</Text>
 
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Preço: R${preco.toFixed(2)}</Text>
@@ -31,18 +59,21 @@ const Preco = ({ navigation }) => {
         <Text style={styles.buttonText}>Avançar</Text>
       </TouchableOpacity>
     </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
+  },
+  containerPreco:{
+    flex: 1,
+    padding:20,
   },
   title: {
     fontSize: 20,
-    marginBottom: 20,
+    fontWeight: "bold",
   },
   button: {
     backgroundColor: '#16A45C',
@@ -55,6 +86,16 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     textAlign: 'center',
+  },
+  antButton: {
+    marginRight: 20,
+  },
+  barContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    paddingBottom: 90,
+    backgroundColor: "black",
   },
 });
 

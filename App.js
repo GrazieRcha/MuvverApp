@@ -32,7 +32,7 @@ export default function App() {
           <Stack.Screen
 
             name="Mode"
-            component={Mode}
+            component={Mode}  options={{ headerShown: false }}
           />
           <Stack.Screen
 
@@ -49,19 +49,19 @@ export default function App() {
           <Stack.Screen
 
             name="Tamanho"
-            component={Tamanho}
+            component={Tamanho} options={{ headerShown: false }}
           />
 
           <Stack.Screen
 
             name="Volume"
-            component={Volume}
+            component={Volume} options={{ headerShown: false }}
           />
 
           <Stack.Screen
 
             name="Preco"
-            component={Preco}
+            component={Preco} options={{ headerShown: false }}
           />
 
           <Stack.Screen

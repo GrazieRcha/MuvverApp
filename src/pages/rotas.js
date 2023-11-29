@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   backButton: {
-    marginRight: 16,
+    marginRight: 20,
   },
   title: {
     color: '#fff',
