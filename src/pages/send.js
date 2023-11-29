@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Send({ navigation }) {
   return (
@@ -22,7 +23,7 @@ export default function Send({ navigation }) {
           <Text style={styles.buttonLabel}>Viajante</Text>
           <Text style={styles.buttonText}>Vai viajar para onde?</Text>
         </View>
-        <MaterialCommunityIcons name="truck" size={64} color="#24B96E" />
+        <MaterialCommunityIcons name="truck" size={64} color="#3BBEF8" />
       </TouchableOpacity>
     </View>
   );
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     width: '85%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#353740',
+    backgroundColor: '#222222',
     padding: 15,
     marginTop: 10,
     marginVertical: 10,

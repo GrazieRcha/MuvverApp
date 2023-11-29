@@ -156,7 +156,7 @@ export default function Rotas({ navigation }) {
 
         <TouchableOpacity
           style={styles.buttonGreen}
-          
+          onPress={() => navigation.navigate('Tamanho')}
         >
           <Text style={styles.buttonText}>Avançar</Text>
         </TouchableOpacity>
