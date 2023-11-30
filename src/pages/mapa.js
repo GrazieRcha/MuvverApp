@@ -21,7 +21,6 @@ export default function Mapa() {
             }
           );
 
-          // Lembre-se de limpar o watcher quando o componente for desmontado
           return () => locationWatcher.remove();
         } catch (locationError) {
           console.error("Erro ao obter localização:", locationError);

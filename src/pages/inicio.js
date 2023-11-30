@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, FlatList, Image, StatusBar } from 'react-native
 import Icon from 'react-native-vector-icons/MaterialIcons'; 
 import { TouchableOpacity } from 'react-native';
 
-
 const DATA = [
   {
     id: '1',
@@ -14,7 +13,8 @@ const DATA = [
     totalDelivery: '575',
     mode: 'Carro',
     profileImage: require('../img/mulher.jpg'),
-    minValueAmount: '120,00',	
+    minValueAmount: '120,00',
+    verified: true,
   },
   {
     id: '2',
@@ -28,88 +28,83 @@ const DATA = [
     minValueAmount: '150,00',	
   },
   {
-   id: '3',
-   title: 'Hoje (12/01) - Amanhã (13/01)',
-   origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Barbara Costa',
-   stars: '4,0',
-   totalDelivery: '70',
-   mode: 'Carro',
-   profileImage: require('../img/img4.png'),
-   minValueAmount: '100,00',	
- },
- {
-   id: '4',
-   title: 'Hoje (12/01) - Amanhã (13/01)',
-   origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Bruna Silva',
-   stars: '4,99',
-   totalDelivery: '70',
-   mode: 'Carro',
-   profileImage: require('../img/img2.png'),
-   minValueAmount: '200,00',	
- },
- {
-   id: '5',
-   title: 'Hoje (12/01) - Amanhã (13/01)',
-   origin: 'Rio Brilhante para Dourados - MS',
-   clientName: 'Carlos Moura',
-   stars: '5,0',
-   totalDelivery: '70',
-   mode: 'Carro',
-   profileImage: require('../img/img1.png'),
-   minValueAmount: '160,00',	
- },
+    id: '3',
+    title: 'Hoje (12/01) - Amanhã (13/01)',
+    origin: 'Rio Brilhante para Dourados - MS',
+    clientName: 'Barbara Costa',
+    stars: '4,0',
+    totalDelivery: '70',
+    mode: 'Carro',
+    profileImage: require('../img/img4.png'),
+    minValueAmount: '100,00',	
+    verified: true,
+  },
+  {
+    id: '4',
+    title: 'Hoje (12/01) - Amanhã (13/01)',
+    origin: 'Rio Brilhante para Dourados - MS',
+    clientName: 'Bruna Silva',
+    stars: '4,99',
+    totalDelivery: '70',
+    mode: 'Carro',
+    profileImage: require('../img/img2.png'),
+    minValueAmount: '200,00',	
+  },
+  {
+    id: '5',
+    title: 'Hoje (12/01) - Amanhã (13/01)',
+    origin: 'Rio Brilhante para Dourados - MS',
+    clientName: 'Carlos Moura',
+    stars: '5,0',
+    totalDelivery: '70',
+    mode: 'Carro',
+    profileImage: require('../img/img1.png'),
+    minValueAmount: '160,00',	
+    verified: true,
+  },
 ];
 
-const Item = ({ id, title, origin, clientName, stars, totalDelivery, mode, profileImage, minValueAmount }) => (
+const Item = ({ item }) => (
   <View>
-    {id !== '1' && <View style={styles.separator} />}
+    {item.id !== '1' && <View style={styles.separator} />}
 
     <View>
-      <Text style={styles.date}>{title}</Text>
-      <Text style={styles.origin}>{origin}</Text>
+      <Text style={styles.date}>{item.title}</Text>
+      <Text style={styles.origin}>{item.origin}</Text>
     </View>
-   
+
     <View style={styles.item}>
-      <Image source={profileImage} style={styles.profileImage} />
+      <Image source={item.profileImage} style={styles.profileImage} />
+      {item.verified && (
+        <View style={styles.verifiedIconContainer}>
+          <Icon name="verified" size={20} color="#32AC61" />
+        </View>
+      )}
       <View>
         <View style={styles.starsContainer}>
-          <Text style={styles.name}>{clientName}</Text>
+          <Text style={styles.name}>{item.clientName}</Text>
           <Icon name="circle" size={7} color="#22222252" />
-          <Text style={styles.stars}>{stars}</Text>
+          <Text style={styles.stars}>{item.stars}</Text>
           <Icon name="star" size={16} color="#222222" />      
         </View>
         <View style={styles.deliveryInfo}>
-          <Text style={styles.totalDelivery}>{`Total de entregas: ${totalDelivery}`}</Text>
+          <Text style={styles.totalDelivery}>{`Total de entregas: ${item.totalDelivery}`}</Text>
           <Icon name="circle" size={7} color="#22222252" style={styles.circleIcon} />
-          <Text style={styles.mode}>{mode}</Text>
+          <Text style={styles.mode}>{item.mode}</Text>
         </View>
       </View>
       <View>
-      <View style={styles.minValueContainer}>
-        <Text style={styles.minValue}>Mínimo</Text>
-        <Text style={styles.minValueAmount}>R$ {minValueAmount}</Text>
-      </View>
+        <View style={styles.minValueContainer}>
+          <Text style={styles.minValue}>Mínimo</Text>
+          <Text style={styles.minValueAmount}>R$ {item.minValueAmount}</Text>
+        </View>
       </View>
     </View>
   </View>
 );
 
 const CarrierFeedScreen = ({ navigation }) => {
-  const renderItem = ({ item }) => (
-    <Item
-      id={item.id}
-      title={item.title}
-      origin={item.origin}
-      clientName={item.clientName}
-      stars={item.stars}
-      totalDelivery={item.totalDelivery}
-      mode={item.mode}
-      profileImage={item.profileImage}
-      minValueAmount={item.minValueAmount}
-    />
-  );
+  const renderItem = ({ item }) => <Item item={item} />;
 
   return (
     <View style={{ flex: 1 }}>
@@ -132,17 +127,15 @@ const CarrierFeedScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Viagens')}>
-            <Text style={styles.buttonHome}>Viagens</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Objetos')}>
-            <Text style={styles.buttonHome}>Objetos</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+            <TouchableOpacity onPress={() => navigation.navigate('Viagens')}>
+              <Text style={styles.buttonHome}>Viagens</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Objetos')}>
+              <Text style={styles.buttonHome}>Objetos</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        </View>
-
-       
       </View>
 
       <FlatList
@@ -151,7 +144,6 @@ const CarrierFeedScreen = ({ navigation }) => {
         keyExtractor={(item) => item.id}
       />
 
-     
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 10 }}>
         <TouchableOpacity
           style={{
@@ -197,18 +189,18 @@ const styles = StyleSheet.create({
     marginRight: 90,
   },
   date: {
-   fontSize: 12,
-   color: '#222222',
-   fontWeight: 'bold',
-   width: '60%',
-   marginLeft: 10,
+    fontSize: 12,
+    color: '#222222',
+    fontWeight: 'bold',
+    width: '60%',
+    marginLeft: 10,
   },
- origin: {
-   fontSize: 12,
-   width: '70%',
-   marginLeft: 10,
-   color: 'rgba(34, 34, 34, 0.32)',
- },
+  origin: {
+    fontSize: 12,
+    width: '70%',
+    marginLeft: 10,
+    color: 'rgba(34, 34, 34, 0.32)',
+  },
   name: {
     fontSize: 12,
     fontWeight: 'bold',
@@ -243,11 +235,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#22222252',
   },
- profileImage: {
-   width: 50,
-   height: 50,
-   borderRadius: 5,
- },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+  },
   minValueContainer: {
     displey: 'flex',
     alignItems: 'flex-end',
@@ -260,7 +252,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#222222',
-
+  },
+  verifiedIconContainer: {
+    position:'absolute',
+    top: 45,
+    left: 50,
   },
 });
 

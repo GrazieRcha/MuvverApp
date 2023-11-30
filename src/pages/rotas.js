@@ -140,12 +140,13 @@ export default function Rotas({ navigation }) {
             />
           </View>
         )}
-
+ 
 <TouchableOpacity
-          style={styles.buttonGreen}
+          style={styles.buttonInter}
           onPress={addIntermediaryPoint}
         >
-          <Text style={styles.buttonText}>Adicionar ponto intermediário</Text>
+             <Icon name="add-circle-outline" size={24} color="Black" marginRight="5%" />
+          <Text style={styles.buttonTextInter}>Adicionar ponto intermediário</Text>
         </TouchableOpacity>
 
         <Text style={styles.label}>Cidade de Destino</Text>
@@ -153,7 +154,6 @@ export default function Rotas({ navigation }) {
           style={styles.input}
           placeholder="Insira a cidade de destino"
         />
-
         <TouchableOpacity
           style={styles.buttonGreen}
           onPress={() => navigation.navigate('Tamanho')}
@@ -218,13 +218,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonMaps: {
-    backgroundColor: 'black',
     alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
  
+},
+buttonTextInter: {
+  color: '#222222',
+  fontSize: 16,
+
 },
   contentContainer: {
     padding: 10,
@@ -251,6 +255,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#16A45C',
     padding: 10,
     alignItems: 'center',
+    marginBottom: 10,
+  },
+  buttonInter: {
+    flexDirection: 'row',
+    color: 'black',
+    padding: 10,
+    left: 50,
     marginBottom: 10,
   },
   removeIcon: {
