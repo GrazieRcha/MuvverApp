@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { requestForegroundPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import {
+  requestForegroundPermissionsAsync,
+  watchPositionAsync,
+  Accuracy,
+} from "expo-location";
 
 export default function Mapa() {
   const [location, setLocation] = useState(null);
@@ -14,7 +18,11 @@ export default function Mapa() {
       if (granted) {
         try {
           const locationWatcher = await watchPositionAsync(
-            { accuracy: Accuracy.High, timeInterval: 1000, distanceInterval: 1 },
+            {
+              accuracy: Accuracy.High,
+              timeInterval: 1000,
+              distanceInterval: 1,
+            },
             (newPosition) => {
               console.log("Nova localização:", newPosition);
               setLocation(newPosition);
@@ -31,7 +39,10 @@ export default function Mapa() {
         setError("Permissão de localização não concedida");
       }
     } catch (permissionError) {
-      console.error("Erro ao obter permissões de localização:", permissionError);
+      console.error(
+        "Erro ao obter permissões de localização:",
+        permissionError
+      );
       setError("Erro ao obter permissões de localização");
     }
   }
@@ -79,7 +90,7 @@ export default function Mapa() {
 const styles = StyleSheet.create({
   mapsContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   map: {
     flex: 1,

@@ -13,7 +13,7 @@ export default function Send({ navigation }) {
         >
           <MaterialCommunityIcons name="arrow-left" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={{ fontSize:20, marginLeft: 15 }}>MUVVER</Text>
+        <Text style={{ fontSize: 20, marginLeft: 15 }}>MUVVER</Text>
       </View>
       <Text style={styles.title}>
         Facilitando seus <Text style={{ fontWeight: "bold" }}>envios.</Text>

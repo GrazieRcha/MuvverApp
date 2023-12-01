@@ -1,7 +1,7 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Inicio from "../pages/inicio";
 import Notificacao from "../pages/notification";
@@ -9,28 +9,24 @@ import Entregas from "../pages/entregas";
 import Pedidos from "../pages/pedidos";
 import Chat from "../pages/chat";
 
-// import Objeto from "../pages/objeto";
-
-
 const Tab = createMaterialBottomTabNavigator();
 
 export default function RoutesTab() {
   return (
     <Tab.Navigator
       activeColor="#222222"
-      inactiveColor="#2222221F" // Cor de fundo inativa
+      inactiveColor="#2222221F"
       shifting={true}
       sceneAnimationEnabled={true}
-      barStyle={{ backgroundColor: '' }} // Cor de fundo da barra completa
     >
       <Tab.Screen
         name="Inicio"
         component={Inicio}
-        options={{ 
+        options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
-          tabBarLabel: "Inicio", // Nome da aba
+          tabBarLabel: "Inicio",
         }}
       />
       <Tab.Screen
@@ -40,7 +36,7 @@ export default function RoutesTab() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bell" color={color} size={26} />
           ),
-          tabBarLabel: "Notificação", // Nome da aba
+          tabBarLabel: "Notificação",
         }}
       />
 
@@ -51,7 +47,7 @@ export default function RoutesTab() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="chat" color={color} size={26} />
           ),
-          tabBarLabel: "Chat", // Nome da aba
+          tabBarLabel: "Chat",
         }}
       />
       <Tab.Screen
@@ -65,7 +61,7 @@ export default function RoutesTab() {
               size={26}
             />
           ),
-          tabBarLabel: "Pedidos", // Nome da aba
+          tabBarLabel: "Pedidos",
         }}
       />
       <Tab.Screen
@@ -75,7 +71,7 @@ export default function RoutesTab() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="truck" color={color} size={26} />
           ),
-          tabBarLabel: "Entregas", // Nome da aba
+          tabBarLabel: "Entregas",
         }}
       />
     </Tab.Navigator>

@@ -16,12 +16,12 @@ const Tamanho = () => {
   const navigation = useNavigation();
 
   const transportOptions = [
-    { label: "Envelope", tamanho: '00 x 00 cm', icon: "envelope",},
-    { label: "Livro", tamanho: '00 x 00 cm', icon: "book" },
-    { label: "Caixa de sapato", tamanho: '00 x 00 cm', icon: "inbox" },
-    { label: "Mochila", tamanho: '00 x 00 cm', icon: "shopping-bag" },
-    { label: "Mala grande", tamanho: '00 x 00 cm', icon: "suitcase" },
-    { label: "Caixa grande", tamanho: '00 x 00 cm', icon: "cube" },
+    { label: "Envelope", tamanho: "00 x 00 cm", icon: "envelope" },
+    { label: "Livro", tamanho: "00 x 00 cm", icon: "book" },
+    { label: "Caixa de sapato", tamanho: "00 x 00 cm", icon: "inbox" },
+    { label: "Mochila", tamanho: "00 x 00 cm", icon: "shopping-bag" },
+    { label: "Mala grande", tamanho: "00 x 00 cm", icon: "suitcase" },
+    { label: "Caixa grande", tamanho: "00 x 00 cm", icon: "cube" },
   ];
 
   const saveData = () => {
@@ -34,25 +34,34 @@ const Tamanho = () => {
       <StatusBar barStyle="dark-content" backgroundColor="black" />
 
       <View>
-         <View style={styles.barContainer}>
-        <TouchableOpacity
-          style={styles.antButton}
-          onPress={() => navigation.navigate("Rotas")}
-        >
-          <Icon name="arrow-left" size={16} color="#fff" />
-        </TouchableOpacity>
+        <View style={styles.barContainer}>
+          <TouchableOpacity
+            style={styles.antButton}
+            onPress={() => navigation.navigate("Rotas")}
+          >
+            <Icon name="arrow-left" size={16} color="#fff" />
+          </TouchableOpacity>
 
-        <Text style={{ color: "#fff" }}>Ser um Muvver</Text>
+          <Text style={{ color: "#fff" }}>Ser um Muvver</Text>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Inicio")}>
-          <Text style={{ color: "#fff" }}>Cancelar</Text>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text style={{ color: "#fff", marginLeft:10, fontSize:20, display:'block', marginTop:-60, marginLeft:15}}>
-          O volume que você pode deslocar tem tamanho similar a que?
-        </Text>
-      </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Inicio")}>
+            <Text style={{ color: "#fff" }}>Cancelar</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text
+            style={{
+              color: "#fff",
+              marginLeft: 10,
+              fontSize: 20,
+              display: "block",
+              marginTop: -60,
+              marginLeft: 15,
+            }}
+          >
+            O volume que você pode deslocar tem tamanho similar a que?
+          </Text>
+        </View>
       </View>
       <View style={styles.containerTamanho}>
         <Text style={styles.title}>Tamanho</Text>
@@ -61,22 +70,21 @@ const Tamanho = () => {
             <View key={index}>
               <View style={styles.transportOption}>
                 <Icon name={option.icon} size={30} color="#16A45C" />
-                
+
                 <View style={styles.radioOptionContainer}>
-                
                   <RadioButton.Group
                     onValueChange={(newValue) => setSelectedTransport(newValue)}
                     value={selectedTransport}
                   >
-                    
                     <RadioButton.Item
                       style={styles.radioOption}
                       label={option.label}
                       value={option.label}
-                      
                     />
                     <View>
-                    <Text style={{ color:'#22222229', left: 20}}>{option.tamanho}</Text>
+                      <Text style={{ color: "#22222229", left: 20 }}>
+                        {option.tamanho}
+                      </Text>
                     </View>
                   </RadioButton.Group>
                 </View>
@@ -93,7 +101,8 @@ const Tamanho = () => {
             marginBottom: 15,
           }}
         >
-          <Text onPress={() => navigation.navigate("Volume")}
+          <Text
+            onPress={() => navigation.navigate("Volume")}
             style={{
               fontSize: 16,
               fontWeight: "bold",
