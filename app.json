@@ -29,5 +29,13 @@
     "plugins": [
       "expo-localization"
     ]
+  },
+  "android": {
+    "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+  },
+  "ios": {
+    "infoPlist": {
+      "NSLocationWhenInUseUsageDescription": "We need your location for some awesome features."
+    }
   }
 }

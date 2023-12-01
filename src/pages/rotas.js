@@ -37,7 +37,7 @@ export default function Rotas({ navigation }) {
                 <View style={styles.topContainer}>
                     <TouchableOpacity
                         style={styles.backButton}
-                        onPress={() => navigation.navigate('Send')}
+                        onPress={() => navigation.navigate('Mode')}
                     >
                         <Icon name="arrow-back" size={24} color="#fff" />
                     </TouchableOpacity>

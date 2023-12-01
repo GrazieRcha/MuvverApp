@@ -28,7 +28,7 @@ const Preco = ({ navigation }) => {
         <View style={styles.barContainer}>
           <TouchableOpacity
             style={styles.antButton}
-            onPress={() => navigation.navigate('Send')}
+            onPress={() => navigation.navigate('Volume')}
           >
             <Icon name="arrow-left" size={16} color="#fff" />
           </TouchableOpacity>

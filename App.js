@@ -67,7 +67,7 @@ export default function App() {
           <Stack.Screen
 
             name="State"
-            component={State}
+            component={State}  options={{ headerShown: false }}
           />
 
         </Stack.Navigator>
